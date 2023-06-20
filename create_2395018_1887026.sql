@@ -2,8 +2,8 @@ DROP SCHEMA IF EXISTS festival CASCADE;
 CREATE SCHEMA festival;
 SET search_path TO festival;
 
-CREATE DOMAIN email AS text CHECK (VALUE LIKE '%.%@%');
-CREATE DOMAIN date_of_birth AS date CHECK (VALUE::date - CURRENT_DATE > 16);
+CREATE DOMAIN email AS text CHECK (VALUE LIKE '%@%.%');
+CREATE DOMAIN date_of_birth AS date CHECK (CURRENT_DATE - VALUE::date > 16);
 
 CREATE TABLE country
 (
@@ -23,6 +23,7 @@ CREATE TABLE address
     address_id    integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     address_line1 text                              NOT NULL,
     address_line2 text,
+    district      text                              NOT NULL,
     postal_code   text                              NOT NULL,
     phone         varchar(16)                       NOT NULL,
     city_id       integer REFERENCES city (city_id) NOT NULL
@@ -35,7 +36,8 @@ CREATE TABLE customer
     last_name           varchar(255)                            NOT NULL,
     email               email                                   NOT NULL,
     date_of_birth       date_of_birth                           NOT NULL,
-    emerg_contact_name  varchar(255)                            NOT NULL,
+    emerg_contact_firstname  varchar(255)                            NOT NULL,
+    emerg_contact_lastname  varchar(255)                            NOT NULL,
     emerg_contact_phone varchar(255)                            NOT NULL,
     address_id          integer REFERENCES address (address_id) NOT NULL
 );
