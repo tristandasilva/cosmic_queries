@@ -83,7 +83,7 @@ CREATE TABLE order_ticket
 CREATE TABLE location
 (
     location_id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    latitude    decimal(8, 6) NOT NULL,
+    latitude    decimal(9, 6) NOT NULL,
     longitude   decimal(9, 6) NOT NULL
 );
 
@@ -112,6 +112,7 @@ CREATE TABLE set
 (
     set_id     integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     start_time time DEFAULT '13:00:00' NOT NULL,
+    end_time   time                    NOT NULL,
     date       date                    NOT NULL,
     stage_id   integer REFERENCES stage (stage_id)
 );
@@ -119,7 +120,8 @@ CREATE TABLE set
 CREATE TABLE artist_set
 (
     artist_id INTEGER REFERENCES artist (artist_id) NOT NULL,
-    set_id    INTEGER REFERENCES set (set_id)       NOT NULL
+    set_id    INTEGER REFERENCES set (set_id)       NOT NULL,
+    PRIMARY KEY (artist_id, set_id)
 );
 
 CREATE TABLE production
@@ -132,13 +134,14 @@ CREATE TABLE production
 CREATE TABLE stage_production
 (
     stage_id INTEGER REFERENCES stage (stage_id)     NOT NULL,
-    prod_id  INTEGER REFERENCES production (prod_id) NOT NULL
+    prod_id  INTEGER REFERENCES production (prod_id) NOT NULL,
+    PRIMARY KEY (stage_id, prod_id)
 );
 
 CREATE TABLE amenity
 (
-    amenity_id  INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    type        TEXT NOT NULL
+    amenity_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    type       TEXT NOT NULL
 );
 
 CREATE TABLE amenity_location
@@ -162,5 +165,3 @@ CREATE TABLE vendor_location
     location_id integer REFERENCES location (location_id) NOT NULL,
     PRIMARY KEY (vendor_id, location_id)
 );
-
-
