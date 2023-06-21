@@ -31,26 +31,27 @@ CREATE TABLE address
 
 CREATE TABLE customer
 (
-    customer_id         integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    first_name          varchar(255)                            NOT NULL,
-    last_name           varchar(255)                            NOT NULL,
-    email               email                                   NOT NULL,
-    date_of_birth       date_of_birth                           NOT NULL,
-    emerg_contact_firstname  varchar(255)                            NOT NULL,
+    customer_id             integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    first_name              varchar(255)                            NOT NULL,
+    last_name               varchar(255)                            NOT NULL,
+    email                   email                                   NOT NULL,
+    date_of_birth           date_of_birth                           NOT NULL,
+    emerg_contact_firstname varchar(255)                            NOT NULL,
     emerg_contact_lastname  varchar(255)                            NOT NULL,
-    emerg_contact_phone varchar(255)                            NOT NULL,
-    address_id          integer REFERENCES address (address_id) NOT NULL
+    emerg_contact_phone     varchar(255)                            NOT NULL,
+    address_id              integer REFERENCES address (address_id) NOT NULL
 );
 
 CREATE TABLE "order"
 (
     order_id       integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    subtotal       decimal(6, 2)               NOT NULL,
-    tax            decimal(5, 2)               NOT NULL,
-    shipping_cost  decimal(4, 2),
-    total          decimal(4, 2)               NOT NULL,
-    payment_method varchar(16)                 NOT NULL,
-    customer_id    integer REFERENCES customer NOT NULL
+    subtotal       decimal(6, 2)                       NOT NULL,
+    tax            decimal(6, 2)                       NOT NULL,
+    shipping_cost  decimal(6, 2)                       NOT NULL,
+    total          decimal(6, 2)                       NOT NULL,
+    payment_method varchar(16)                         NOT NULL,
+    order_date     timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    customer_id    integer REFERENCES customer         NOT NULL
 );
 
 CREATE TABLE ticket
@@ -75,8 +76,8 @@ CREATE TABLE staff
 
 CREATE TABLE order_ticket
 (
-    ticket_id integer REFERENCES ticket (ticket_id) NOT NULL,
-    order_id  integer REFERENCES "order" (order_id) NOT NULL
+    order_id  integer REFERENCES "order" (order_id) NOT NULL,
+    ticket_id integer REFERENCES ticket (ticket_id) NOT NULL
 );
 
 CREATE TABLE location
@@ -137,8 +138,7 @@ CREATE TABLE stage_production
 CREATE TABLE amenity
 (
     amenity_id  INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    type        TEXT NOT NULL,
-    location_id INTEGER REFERENCES location (location_id)
+    type        TEXT NOT NULL
 );
 
 CREATE TABLE amenity_location
