@@ -34,7 +34,7 @@ WHERE stage_id NOT IN (SELECT stage_id FROM stage_production);
 
 SELECT name, genre, COUNT(s.stage_id) as nb_of_sets
 FROM stage
-    left join set s on s.stage_id = stage.stage_id
+     inner join set s on s.stage_id = stage.stage_id
 WHERE date = '2023-08-13'
 GROUP BY name, genre;
 
