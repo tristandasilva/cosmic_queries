@@ -93,8 +93,8 @@ INSERT INTO staff(first_name, last_name, date_of_birth, email, role, hourly_pay,
 VALUES ('Joel', 'Smith', '1990-01-01', 'joelsmith@example.com', 'Volunteer', 0, 10, 8),
        ('Jenna', 'Martin', '1988-05-12', 'jennamartin@example.com', 'Medical', 15.0, 11, 8),
        ('Robert', 'Jenkins', '1975-11-21', 'robertjohnson@example.com', 'Production', 20.0, 12, 8),
-       ('Sarah', 'Wilson', '1995-03-07', 'sarahwilson@example.com', 'Management', 25.0, 13, null),
-       ('Jessica', 'Clark', '1982-09-15', 'jessicaclark@example.com', 'General', 10.0, 14, null),
+       ('Sarah', 'Watson', '1995-03-07', 'sarahwatson@example.com', 'Management', 25.0, 13, null),
+       ('Jessica', 'Clinton', '1982-09-15', 'jessicaclinton@example.com', 'General', 10.0, 14, null),
        ('Timothy', 'James', '1971-12-05', 'timothyjames@example.com', 'Production', 20.0, 15, 8),
        ('Patricia', 'Jackson', '1991-02-10', 'patriciajackson@example.com', 'Management', 25.0, 16, 8);
 
@@ -284,3 +284,7 @@ VALUES (3, 1),
        (2, 6),
        (2, 2),
        (2, 11);
+
+UPDATE ticket
+SET price = 320
+WHERE ticket_id = 3;

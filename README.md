@@ -1,5 +1,5 @@
 # Cosmic Queries
-#### By: Tristan Dasilva (2395018) & Alexander (1887026)
+#### By: Tristan Dasilva (2395018) & Alexander Grigoratos (1887026)
 
 
 Cosmic Queries is a cutting-edge application that is designed specifically to simply the planning 
