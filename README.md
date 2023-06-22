@@ -2,7 +2,7 @@
 #### By: Tristan Dasilva (2395018) & Alexander Grigoratos (1887026)
 
 
-Cosmic Queries is a cutting-edge application that is designed specifically to simply the planning 
+Cosmic Queries is a cutting-edge application that is designed specifically to simplify the planning 
 and management of a music festival. It serves as a database management system that features a user-friendly
 content management system (CMS) that helps organizers keep track and manage important aspects of their festival's
 components. Users will have the ability to easily handle important tasks such as scheduling, ticketing, production
